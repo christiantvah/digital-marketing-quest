@@ -72,23 +72,23 @@ export function tinoAvatar(mode = 'day') {
     <!-- Pelo (estilo joven moderno con quiff) -->
     <path d="M 65 75 Q 68 50 95 48 Q 130 46 138 70 Q 138 78 130 78 L 70 80 Q 65 80 65 75 Z" fill="#1F2937"/>
     <path d="M 88 50 Q 95 38 105 42 Q 115 35 125 50" stroke="#1F2937" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <!-- Cejas -->
-    <path d="M 80 80 Q 88 76 96 80" stroke="#1F2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <path d="M 104 80 Q 112 76 120 80" stroke="#1F2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Cejas levantadas (expresión despierta) -->
+    <path d="M 78 78 Q 88 73 96 78" stroke="#1F2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 104 78 Q 112 73 122 78" stroke="#1F2937" stroke-width="2.5" fill="none" stroke-linecap="round"/>
     <!-- Lentes -->
-    <circle cx="88" cy="92" r="10" fill="rgba(255,255,255,0.4)" stroke="#1F2937" stroke-width="2"/>
-    <circle cx="112" cy="92" r="10" fill="rgba(255,255,255,0.4)" stroke="#1F2937" stroke-width="2"/>
-    <line x1="98" y1="92" x2="102" y2="92" stroke="#1F2937" stroke-width="2"/>
+    <circle cx="88" cy="92" r="11" fill="rgba(255,255,255,0.5)" stroke="#1F2937" stroke-width="2.2"/>
+    <circle cx="112" cy="92" r="11" fill="rgba(255,255,255,0.5)" stroke="#1F2937" stroke-width="2.2"/>
+    <line x1="99" y1="92" x2="101" y2="92" stroke="#1F2937" stroke-width="2.2"/>
     <!-- Ojos detrás de lentes -->
-    <circle cx="88" cy="92" r="2.5" fill="#1F2937"/>
-    <circle cx="112" cy="92" r="2.5" fill="#1F2937"/>
+    <circle cx="88" cy="92" r="2.8" fill="#1F2937"/>
+    <circle cx="112" cy="92" r="2.8" fill="#1F2937"/>
+    <!-- Brillito ojos -->
+    <circle cx="89" cy="91" r="0.9" fill="#fff"/>
+    <circle cx="113" cy="91" r="0.9" fill="#fff"/>
     <!-- Nariz -->
-    <path d="M 100 100 L 96 112 Q 100 115 104 112 Z" fill="#E0A074" opacity="0.5"/>
-    <!-- Sonrisa amplia -->
-    <path d="M 84 118 Q 100 130 116 118" stroke="#1F2937" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-    <!-- Diente blanco asomando (carisma) -->
-    <rect x="96" y="120" width="3" height="4" fill="#fff" rx="1"/>
-    <rect x="101" y="120" width="3" height="4" fill="#fff" rx="1"/>
+    <path d="M 100 102 L 96 113 Q 100 116 104 113 Z" fill="#E0A074" opacity="0.45"/>
+    <!-- Sonrisa amable -->
+    <path d="M 86 120 Q 100 128 114 120" stroke="#1F2937" stroke-width="2.6" fill="none" stroke-linecap="round"/>
     <!-- Auriculares around neck (YouTuber vibe) -->
     <path d="M 65 110 Q 60 125 70 135" stroke="#10B981" stroke-width="3" fill="none"/>
     <path d="M 135 110 Q 140 125 130 135" stroke="#10B981" stroke-width="3" fill="none"/>

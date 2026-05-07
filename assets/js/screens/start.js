@@ -1,5 +1,5 @@
 // ===== START SCREEN =====
-import { get, setPlayerName, applyMode } from '../core/state.js';
+import { get, setPlayerName } from '../core/state.js';
 import { navigate } from '../core/router.js';
 import { playClick, unlock as unlockAudio } from '../core/audio.js';
 import { tinoAvatar } from '../ui/svg-icons.js';
@@ -55,7 +55,7 @@ export function renderStart(root) {
   const features = el('div', { class: 'start__features' });
   [
     { icon: '🎬', label: 'Historia inmersiva', text: '90 escenas narrativas con TINO' },
-    { icon: '🧠', label: 'Aprende jugando', text: '125+ retos interactivos' },
+    { icon: '🧠', label: 'Aprende jugando', text: '110+ retos interactivos' },
     { icon: '👑', label: 'Boss Battle final', text: '15 preguntas cronometradas' },
     { icon: '🔁', label: 'Modo revisión', text: 'Repasa tus errores' },
   ].forEach(f => {
@@ -74,11 +74,13 @@ export function renderStart(root) {
   function start() {
     unlockAudio(); // first user gesture
     playClick();
+    // Capturamos firstPlay ANTES de setPlayerName porque setPlayerName lo apaga.
+    const isFirstTime = state.meta.firstPlay && !hasProgress;
     const name = nameInput.value.trim();
     if (name) setPlayerName(name);
     else if (!state.player.name) setPlayerName('Marketer');
 
-    if (state.meta.firstPlay && !hasProgress) {
+    if (isFirstTime) {
       navigate('tutorial');
     } else {
       navigate('map');

@@ -1,9 +1,8 @@
 // ===== REVIEW SCREEN — repasar preguntas falladas =====
 import { navigate } from '../core/router.js';
 import { playClick } from '../core/audio.js';
-import { get, clearFailedQuestion } from '../core/state.js';
+import { get, clearFailedQuestion, getSessionMeta } from '../core/state.js';
 import { el } from '../ui/components.js';
-import { getSessionMeta } from '../core/state.js';
 
 export function renderReview(root) {
   const state = get();

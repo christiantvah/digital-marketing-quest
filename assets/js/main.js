@@ -42,7 +42,16 @@ function setupTopbar() {
   const soundToggle = document.getElementById('soundToggle');
   const menuBtn = document.getElementById('menuBtn');
 
-  brandBtn.addEventListener('click', () => { playClick(); navigate('map'); });
+  // Topbar always visible (mode/sound/menu accesibles desde toda pantalla)
+  topbar.hidden = false;
+
+  brandBtn.addEventListener('click', () => {
+    playClick();
+    const cur = getCurrent();
+    // En start, click sobre brand no hace nada útil (ya estás ahí).
+    // En cualquier otra, te lleva al mapa.
+    if (cur && cur.name && cur.name !== 'start') navigate('map');
+  });
   brandBtn.addEventListener('mouseenter', () => playHover());
 
   modeToggle.addEventListener('click', () => {
@@ -57,8 +66,9 @@ function setupTopbar() {
     if (!cur) { unlockAudio(); playClick(); }
   });
 
-  menuBtn.addEventListener('click', () => {
+  menuBtn.addEventListener('click', (e) => {
     playClick();
+    e.stopPropagation();
     toggleMenu();
   });
 
@@ -68,47 +78,33 @@ function setupTopbar() {
     const hud = document.getElementById('topbarHud');
     if (!hud) return;
     const cur = getCurrent();
+    // En pantallas pre-juego no mostramos puntos/racha (no significan nada todavía).
     if (cur && (cur.name === 'start' || cur.name === 'tutorial' || cur.name === 'how-to-play')) {
       hud.innerHTML = '';
       return;
     }
     hud.innerHTML = `
-      <span class="hud-item">⭐ <strong>${s.scores.total}</strong></span>
-      <span class="hud-item">🔥 <strong>${s.scores.streak}</strong></span>
+      <span class="hud-item" title="Puntos totales">⭐ <strong>${s.scores.total}</strong></span>
+      <span class="hud-item" title="Racha actual">🔥 <strong>${s.scores.streak}</strong></span>
     `;
   }
   subscribe(updateHud);
   updateHud();
 
-  // Show topbar on non-start screens
-  function updateTopbarVisibility() {
-    const cur = getCurrent();
-    const hidden = !cur || cur.name === 'start';
-    topbar.hidden = hidden;
-  }
-  // Patch navigate to update topbar
-  const origNavigate = window.__origNavigate || navigate;
-  window.__origNavigate = origNavigate;
-
-  // Subscribe via mutation observer on app
+  // Refresca el HUD cada vez que el contenido principal cambia (cambio de pantalla).
   const obs = new MutationObserver(() => {
-    updateTopbarVisibility();
     updateHud();
   });
   obs.observe(document.getElementById('app'), { childList: true });
-  updateTopbarVisibility();
 }
 
 // === Side menu ===
-let menuOpen = false;
 function toggleMenu() {
   const existing = document.getElementById('sideMenu');
   if (existing) {
     existing.remove();
-    menuOpen = false;
     return;
   }
-  menuOpen = true;
   const menu = el('div', { class: 'menu', id: 'sideMenu' });
   const items = [
     { icon: '🗺️', label: 'Mapa', action: () => navigate('map') },
@@ -116,6 +112,7 @@ function toggleMenu() {
     { icon: '📋', label: 'Cheat sheet', action: () => navigate('cheatsheet') },
     { icon: '📝', label: 'Modo revisión', action: () => navigate('review') },
     { icon: '❓', label: 'Cómo se juega', action: () => navigate('how-to-play') },
+    { icon: '🏠', label: 'Inicio', action: () => navigate('start') },
     { divider: true },
     { icon: '🔄', label: 'Reiniciar todo', danger: true, action: () => {
       if (confirm('¿Reiniciar TODO el progreso? Esto no se puede deshacer.')) {
@@ -132,7 +129,7 @@ function toggleMenu() {
     menu.appendChild(el('button', {
       class: `menu__item ${it.danger ? 'is-danger' : ''}`,
       type: 'button',
-      onclick: () => { playClick(); document.getElementById('sideMenu')?.remove(); menuOpen = false; it.action(); }
+      onclick: () => { playClick(); document.getElementById('sideMenu')?.remove(); it.action(); }
     },
       el('span', { 'aria-hidden': 'true' }, it.icon),
       el('span', {}, it.label)
@@ -140,16 +137,24 @@ function toggleMenu() {
   });
   document.body.appendChild(menu);
 
-  // Close on outside click
+  // Cerrar al hacer click fuera (excluyendo el botón que lo abre)
   setTimeout(() => {
     const onClick = (e) => {
-      if (!menu.contains(e.target) && e.target.id !== 'menuBtn') {
+      if (!menu.contains(e.target) && e.target.id !== 'menuBtn' && !e.target.closest('#menuBtn')) {
         menu.remove();
-        menuOpen = false;
         document.removeEventListener('click', onClick);
       }
     };
     document.addEventListener('click', onClick);
+    // ESC también cierra
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        menu.remove();
+        document.removeEventListener('click', onClick);
+        document.removeEventListener('keydown', onKey);
+      }
+    };
+    document.addEventListener('keydown', onKey);
   }, 50);
 }
 
@@ -180,15 +185,7 @@ function boot() {
   setupTopbar();
   setupAudioUnlock();
   applyReducedMotion();
-
-  // Restore session if mid-game
-  const state = get();
-  if (state.player.name && state.progress.currentSession && !state.progress.sessionsCompleted.includes(state.progress.currentSession)) {
-    // Could resume mid-story, but safer to land on map for clarity
-    navigate('start');
-  } else {
-    navigate('start');
-  }
+  navigate('start');
 }
 
 if (document.readyState === 'loading') {

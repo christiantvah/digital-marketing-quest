@@ -59,7 +59,8 @@ export function renderMatching(container, question, { onAnswer } = {}) {
       playCorrect();
       selected = null;
       if (matched.size === pairs.length) {
-        setTimeout(() => onAnswer && onAnswer({ correct: errors === 0, partialErrors: errors }), 400);
+        // Permisivo: si emparejó todo, cuenta como correcto. Los errores intermedios fueron parte del aprendizaje.
+        setTimeout(() => onAnswer && onAnswer({ correct: true, partialErrors: errors }), 400);
       }
     } else {
       errors++;
