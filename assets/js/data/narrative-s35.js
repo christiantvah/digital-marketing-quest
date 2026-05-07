@@ -1,0 +1,141 @@
+// ===== NARRATIVA SESIÓN 3.5 — "Era de la IA" =====
+// Modo NOCHE. Consumidor superempoderado por IA + Modo IA Google + Gemini + UCP + YouTube.
+
+export const narrativeS35 = {
+  id: 's35',
+  mode: 'night',
+  title: 'Era de la IA',
+  subtitle: 'Consumidor superempoderado por IA',
+  scenes: [
+    {
+      id: 's35-1',
+      speaker: 'narrator',
+      text: '11:42 p.m. La agencia. TINO está mirando seis pantallas. En una, ChatGPT. En otra, Google con un brillito raro nuevo. En las demás, números, números, números.',
+      visual: { type: 'svg', payload: 'aiSparkle' },
+    },
+    {
+      id: 's35-2',
+      speaker: 'TINO',
+      text: 'Capítulo bonus. Tema: el consumidor SUPEREMPODERADO. Y no, no es un superhéroe. Es algo más raro: tu cliente que ahora viene con un asistente de IA en el bolsillo.',
+      visual: { type: 'emoji', payload: '🦸' },
+    },
+    {
+      id: 's35-3',
+      speaker: 'TINO',
+      text: 'Antes el cliente buscaba "cafetera buena". Hoy le pregunta a Gemini: "comparame las 5 mejores cafeteras debajo de 800 soles para tomar café diario sin dolor de cabeza". Y le responde con tabla, pros y contras.',
+      visual: { type: 'emoji', payload: '🤖' },
+    },
+    {
+      id: 's35-4',
+      speaker: 'TINO',
+      text: 'No estamos exagerando. Google YA es 2.3x más usado que ChatGPT para decisiones de compra. La gente sigue prefiriendo Google. Pero un Google distinto.',
+      visual: { type: 'emoji', payload: '🔍' },
+      dataCard: { number: '2.3x', label: 'Google es 2.3x más usado que ChatGPT para decidir compras', source: 'Insight Sesión 3.5' },
+    },
+    {
+      id: 's35-5',
+      speaker: 'TINO',
+      text: 'El Buscador de Google ahora tiene MODO IA. ¿Sabes qué hay detrás? Gemini. El modelo de IA propio de Google. No ChatGPT. Es Gemini.',
+      visual: { type: 'svg', payload: 'aiSparkle' },
+    },
+    {
+      id: 's35-6',
+      speaker: 'TINO',
+      text: 'Y Gemini ya está corriendo dentro de los 15 productos principales de Google. Esos productos suman 500 millones de usuarios. Mil quinientos kilos de IA en tu vida sin que te enteres.',
+      visual: { type: 'emoji', payload: '🌐' },
+      dataCard: { number: '500M', label: 'Usuarios de los 15 productos Google con Gemini', source: 'Sesión 3.5' },
+    },
+    {
+      id: 's35-7',
+      speaker: 'TINO',
+      text: 'El nuevo Buscador es: más PERSONALIZADO, más INTELIGENTE… y más AGENTE. La última es la que importa. Un Buscador "agente" no solo te muestra resultados, hace cosas POR ti.',
+      visual: { type: 'emoji', payload: '🎩' },
+      highlight: { word: 'agente', tooltip: 'Un agente de IA actúa por ti: compara, decide, ejecuta. No solo busca.' },
+    },
+    {
+      id: 's35-8',
+      speaker: 'TINO',
+      text: 'Ejemplo real: agentes de IA que YA reservan vuelos, comparan créditos, cierran compras sin que tú tipees el número de tu tarjeta. Esto se llama AGENTIC COMMERCE. Y ya pasa.',
+      visual: { type: 'emoji', payload: '🛒' },
+    },
+    {
+      id: 's35-9',
+      speaker: 'TINO',
+      text: 'Para que esos agentes hablen entre sí (porque hay miles), Google y otros lanzaron un estándar abierto: UCP — Universal Commerce Protocol. Apunta esa sigla.',
+      visual: { type: 'emoji', payload: '🔗' },
+      dataCard: { number: 'UCP', label: 'Universal Commerce Protocol — estándar de comercio agéntico', source: 'Era IA' },
+    },
+    {
+      id: 's35-10',
+      speaker: 'TINO',
+      text: 'Bonus track: YouTube. Es el puente cultura-creadores-comercio más grande del mundo. Y los anuncios de YouTube en Smart TV (CTV) generaron 1,000 millones de conversiones en 12 meses.',
+      visual: { type: 'emoji', payload: '📺' },
+      dataCard: { number: '1B', label: 'Conversiones de YouTube CTV en 12 meses', source: 'Sesión 3.5' },
+    },
+    {
+      id: 's35-11',
+      speaker: 'TINO',
+      text: 'Y aquí va el dato bombazo: el 85% de usuarios en México afirma que YouTube tiene los creadores más confiables del internet. Más confiables que Instagram. Más que TikTok. YouTube.',
+      visual: { type: 'emoji', payload: '🎬' },
+      dataCard: { number: '85%', label: 'Mexicanos: YouTube tiene los creadores más confiables', source: 'Sesión 3.5' },
+    },
+    {
+      id: 's35-12',
+      speaker: 'TINO',
+      text: 'Para el consumidor superempoderado, las marcas tienen que ofrecer asistencia INTELIGENTE, PERSONAL Y PRÁCTICA en cada paso. Las tres palabras. Apunta.',
+      visual: { type: 'emoji', payload: '✨' },
+      highlight: { word: 'inteligente, personal y práctica', tooltip: 'Asistencia inteligente: usa IA para anticipar. Personal: única para cada usuario. Práctica: resuelve, no entretiene.' },
+    },
+    {
+      id: 's35-13',
+      speaker: 'TINO',
+      text: 'El embudo tradicional QUEDÓ OBSOLETO. Antes era TOFU → MOFU → BOFU lineal. Hoy un cliente puede saltar a BOFU en 30 segundos porque su agente de IA ya investigó por él.',
+      visual: { type: 'emoji', payload: '🔀' },
+    },
+    {
+      id: 's35-14',
+      speaker: 'TINO',
+      text: 'Cuatro estrategias para maximizar ROI en este nuevo mundo: (1) consolidar datos, (2) alinear ofertas, (3) adoptar IA, y (4) aprovechar oportunidades / presupuestos flexibles.',
+      visual: { type: 'emoji', payload: '🚀' },
+      dataCard: { number: '4', label: 'Estrategias para maximizar ROI en era IA', source: 'Sesión 3.5' },
+    },
+    {
+      id: 's35-15',
+      speaker: 'TINO',
+      text: 'El consumidor superempoderado NO huye de las marcas. Las busca como inspiración. Pero ahora exige más rapidez, más relevancia y más respeto a su tiempo.',
+      visual: { type: 'emoji', payload: '🎯' },
+    },
+    {
+      id: 's35-16',
+      speaker: 'TINO',
+      text: 'Si tu marca no tiene presencia en el Modo IA de Google, no tiene reseñas con datos estructurados, y no piensa en agentes… ya estás invisible para el 30% de tus prospectos. Y subiendo.',
+      visual: { type: 'emoji', payload: '🌫️' },
+    },
+  ],
+  flashQuiz: [
+    {
+      id: 's35-flash-1',
+      type: 'mc',
+      prompt: 'El modelo de IA detrás del nuevo Buscador de Google es:',
+      options: [
+        { text: 'ChatGPT', correct: false },
+        { text: 'Claude', correct: false },
+        { text: 'Gemini', correct: true },
+        { text: 'Llama', correct: false },
+      ],
+    },
+    {
+      id: 's35-flash-2',
+      type: 'cloze',
+      prompt: 'Estándar abierto para comercio agéntico',
+      template: 'El estándar abierto para comercio basado en agentes se llama __.',
+      answers: [['UCP', 'Universal Commerce Protocol']],
+    },
+    {
+      id: 's35-flash-3',
+      type: 'tf',
+      prompt: 'ChatGPT es 2.3x más usado que Google para decisiones de compra.',
+      answer: false,
+    },
+  ],
+};

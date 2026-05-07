@@ -1,0 +1,156 @@
+// ===== NARRATIVA SESIÓN 2 — "El Espía Digital" =====
+// Modo NOCHE. Agencia detective "TINO & Asociados". POEM + Benchmarking.
+
+export const narrativeS2 = {
+  id: 's2',
+  mode: 'night',
+  title: 'El Espía Digital',
+  subtitle: 'Análisis Competitivo + POEM',
+  scenes: [
+    {
+      id: 's2-1',
+      speaker: 'narrator',
+      text: '9:47 p.m. Una calle de Trujillo. Garúa. Un letrero parpadea: "TINO & ASOCIADOS — Investigaciones Digitales". Subes las escaleras de madera. Huele a café tostado.',
+      visual: { type: 'emoji', payload: '🌧️' },
+    },
+    {
+      id: 's2-2',
+      speaker: 'TINO',
+      text: 'Llegaste. Pasa. Quítate la casaca. Hoy te toca tu primer caso de campo. Cliente: una marca peruana que se está dejando comer por la competencia.',
+      visual: { type: 'emoji', payload: '🕵️' },
+    },
+    {
+      id: 's2-3',
+      speaker: 'TINO',
+      text: 'Antes de mandar al cliente a la guerra, necesitamos el ANÁLISIS COMPETITIVO DEL ENTORNO DIGITAL. Y la analogía oficial es esta…',
+      visual: { type: 'emoji', payload: '⚽' },
+    },
+    {
+      id: 's2-4',
+      speaker: 'TINO',
+      text: 'Es como entrar al vestidor del equipo rival antes del partido. No para copiar la jugada. Para anticiparte a ella.',
+      visual: { type: 'emoji', payload: '🔍' },
+      highlight: { word: 'anticiparte', tooltip: 'Espiar al rival no es copiarlo. Es entender su lógica para jugar mejor.' },
+    },
+    {
+      id: 's2-5',
+      speaker: 'TINO',
+      text: 'Para mapear la presencia digital de cualquier marca, usamos el modelo POEM. Forrester Research lo creó en 2008. Tres letras. P-O-E-M.',
+      visual: { type: 'svg', payload: 'poemVenn' },
+      dataCard: { number: '2008', label: 'Forrester crea el modelo POEM', source: 'Forrester Research' },
+    },
+    {
+      id: 's2-6',
+      speaker: 'TINO',
+      text: 'P de PAID. Medios pagados. Anuncios. Tú sueltas plata, ellos te muestran. Google Ads, Meta Ads, influencer pagado, YouTube pre-roll.',
+      visual: { type: 'emoji', payload: '💰' },
+    },
+    {
+      id: 's2-7',
+      speaker: 'TINO',
+      text: 'Ejemplo peruano: anuncio de "préstamo personal" del BCP que te aparece cuando googleas. Eso es Paid puro.',
+      visual: { type: 'emoji', payload: '🏦' },
+    },
+    {
+      id: 's2-8',
+      speaker: 'TINO',
+      text: 'O de OWNED. Medios PROPIOS. La marca los controla 100%. Su web saga.com.pe. Su Instagram oficial. Su blog. Su WhatsApp. Su app.',
+      visual: { type: 'emoji', payload: '🏠' },
+    },
+    {
+      id: 's2-9',
+      speaker: 'TINO',
+      text: 'Owned tip: si dejas de pagar, sigue ahí. Por eso es tu activo más valioso a largo plazo.',
+      visual: { type: 'emoji', payload: '🔑' },
+      highlight: { word: 'activo', tooltip: 'Un activo digital es algo que la marca posee y le genera valor sin pago recurrente: web, app, base de datos, lista de email.' },
+    },
+    {
+      id: 's2-10',
+      speaker: 'TINO',
+      text: 'E de EARNED. Medios GANADOS. Otros hablan de la marca SIN que la marca pague. Reseñas, hashtags orgánicos, prensa, boca a boca digital.',
+      visual: { type: 'emoji', payload: '🗣️' },
+    },
+    {
+      id: 's2-11',
+      speaker: 'TINO',
+      text: 'Cuidado: las reseñas NEGATIVAS también son Earned. Una reseña de 1 estrella en Google Maps cuenta. Earned no significa "bueno", significa "ganado sin pagar".',
+      visual: { type: 'emoji', payload: '⭐' },
+      dataCard: { number: '4.1★', label: 'KFC Trujillo en Google Maps con 2,400 reseñas — Earned puro', source: 'Ejemplo POEM' },
+    },
+    {
+      id: 's2-12',
+      speaker: 'TINO',
+      text: 'Cambio de tema. ¿Qué hacemos para aprender de los mejores? BENCHMARKING. Y hay 4 tipos. No tres. No cinco. Cuatro. Apunta:',
+      visual: { type: 'emoji', payload: '🧭' },
+    },
+    {
+      id: 's2-13',
+      speaker: 'TINO',
+      text: 'Uno: COMPETITIVO DIRECTO. Compara con quien vende lo mismo a tu mismo público. Tambo+ aprende de Oxxo, Mass y Listo.',
+      visual: { type: 'emoji', payload: '🏪' },
+    },
+    {
+      id: 's2-14',
+      speaker: 'TINO',
+      text: 'Dos: FUNCIONAL. Compara con quien hace algo MEJOR aunque sea de otro rubro. Tambo+ aprende de Starbucks para mejorar su café.',
+      visual: { type: 'emoji', payload: '☕' },
+    },
+    {
+      id: 's2-15',
+      speaker: 'TINO',
+      text: 'Tres: INTERNO. Compara contra TI MISMO. Tambo+ aprende de sus tiendas top vs sus tiendas pobres. Mismo branding, distintos resultados.',
+      visual: { type: 'emoji', payload: '🪞' },
+    },
+    {
+      id: 's2-16',
+      speaker: 'TINO',
+      text: 'Cuatro: GENÉRICO. Compara con cualquier industria que te inspire. Tambo+ aprende de Amazon para su delivery. Distinto rubro, mismo estándar.',
+      visual: { type: 'emoji', payload: '📦' },
+      dataCard: { number: '4', label: 'Tipos de Benchmarking: Competitivo, Funcional, Interno, Genérico', source: 'Sesión 2' },
+    },
+    {
+      id: 's2-17',
+      speaker: 'TINO',
+      text: '¿Y qué herramientas usa un buen detective digital? Mira el kit. Meta Ad Library para ver TODOS los anuncios activos de cualquier marca en Facebook/Instagram. Gratis.',
+      visual: { type: 'emoji', payload: '🛠️' },
+      highlight: { word: 'Meta Ad Library', tooltip: 'Biblioteca pública de anuncios. Te muestra cada anuncio activo de una página, gratis.' },
+    },
+    {
+      id: 's2-18',
+      speaker: 'TINO',
+      text: 'Google Trends para volúmenes de búsqueda. Phlanx para engagement de IG. SimilarWeb para tráfico web. Social Blade para crecimiento de seguidores. Google Transparency Center para anuncios en Google. Tu turno: pasamos al campo.',
+      visual: { type: 'emoji', payload: '🔬' },
+      dataCard: { number: '6+', label: 'Herramientas clave de inteligencia competitiva', source: 'Kit del espía digital' },
+    },
+  ],
+  flashQuiz: [
+    {
+      id: 's2-flash-1',
+      type: 'mc',
+      prompt: '¿Quién creó el modelo POEM y en qué año?',
+      options: [
+        { text: 'Google, 2010', correct: false },
+        { text: 'Forrester Research, 2008', correct: true },
+        { text: 'Harvard Business Review, 2005', correct: false },
+        { text: 'Meta, 2012', correct: false },
+      ],
+    },
+    {
+      id: 's2-flash-2',
+      type: 'mc',
+      prompt: 'Tambo+ aprende de Amazon para su delivery. ¿Qué tipo de Benchmarking es?',
+      options: [
+        { text: 'Competitivo Directo', correct: false },
+        { text: 'Funcional', correct: false },
+        { text: 'Interno', correct: false },
+        { text: 'Genérico', correct: true },
+      ],
+    },
+    {
+      id: 's2-flash-3',
+      type: 'tf',
+      prompt: 'Una reseña negativa de 1 estrella en Google también es Earned Media.',
+      answer: true,
+    },
+  ],
+};

@@ -1,0 +1,54 @@
+/* ===== RESPONSIVE ===== */
+
+/* Mobile baseline ya está en componentes. Solo overrides puntuales. */
+
+@media (max-width: 640px) {
+  .topbar { padding: var(--space-2) var(--space-3); gap: var(--space-2); }
+  .topbar__title { display: none; }
+  .topbar__hud { gap: var(--space-2); font-size: 0.78rem; }
+  .topbar__hud .hud-item { padding: 3px 8px; }
+  .topbar__actions .icon-btn { width: 36px; height: 36px; }
+
+  .app { padding: var(--space-3) var(--space-3); }
+
+  .story__stage {
+    grid-template-columns: 1fr;
+    padding: var(--space-3);
+    min-height: 280px;
+  }
+  .story__avatar {
+    align-self: center;
+    margin-bottom: var(--space-2);
+  }
+  .story__bubble::before { display: none; }
+  .story__visual {
+    position: static;
+    width: 60px;
+    height: 60px;
+    align-self: flex-end;
+  }
+
+  .quiz__options { grid-template-columns: 1fr; }
+  .dnd__zones { grid-template-columns: 1fr 1fr; }
+  .map__path { grid-template-columns: repeat(2, 1fr); }
+
+  .modal { padding: var(--space-4); }
+}
+
+@media (max-width: 380px) {
+  .dnd__zones { grid-template-columns: 1fr; }
+  .map__path { grid-template-columns: 1fr; }
+  .start__buttons .btn { width: 100%; }
+}
+
+@media (min-width: 1024px) {
+  .story__stage { padding: var(--space-6); min-height: 380px; }
+  .map__path { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Print */
+@media print {
+  .topbar, .modal-root, .toast-root, .confetti-canvas, .icon-btn { display: none !important; }
+  body { background: #fff; color: #000; }
+  .card, .cheatsheet__section { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+}
