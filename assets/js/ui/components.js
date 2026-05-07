@@ -234,10 +234,13 @@ export function letterFor(idx) {
 export function el(tag, attrs = {}, ...children) {
   const e = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => {
+    // skip null/undefined and explicit boolean-false (avoid disabled="false" still disabling)
+    if (v == null || v === false) return;
     if (k === 'class') e.className = v;
     else if (k === 'html') e.innerHTML = v;
     else if (k.startsWith('on')) e.addEventListener(k.slice(2).toLowerCase(), v);
     else if (k === 'data') Object.entries(v).forEach(([dk, dv]) => e.dataset[dk] = dv);
+    else if (v === true) e.setAttribute(k, '');
     else e.setAttribute(k, v);
   });
   children.flat().forEach(c => {

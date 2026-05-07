@@ -49,10 +49,14 @@ export function renderFlashQuiz(root, params) {
     const body = el('div', {});
     card.appendChild(body);
 
+    // Timer state (declared first so closures capture safely)
+    let timeLeft = FLASH_TIME;
+    let tickInt = null;
+
     // Mechanic
     const mech = renderMechanic(q.type, body, q, {
       onAnswer: ({ correct }) => {
-        clearInterval(tickInt);
+        if (tickInt) clearInterval(tickInt);
         if (correct) {
           correctCount++;
           awardPoints(50, { isCorrect: true });
@@ -68,10 +72,9 @@ export function renderFlashQuiz(root, params) {
       }
     });
 
-    let timeLeft = FLASH_TIME;
     timerFill.style.transition = 'width 1s linear';
     requestAnimationFrame(() => { timerFill.style.width = '0%'; });
-    const tickInt = setInterval(() => {
+    tickInt = setInterval(() => {
       timeLeft--;
       if (timeLeft <= 3 && timeLeft > 0) playTick();
       if (timeLeft <= 0) {

@@ -69,10 +69,10 @@ export function renderStory(root, params) {
     progressLabel.textContent = `${idx + 1}/${narrative.scenes.length}`;
     progressFill.style.width = `${((idx + 1) / narrative.scenes.length) * 100}%`;
 
-    // Update buttons
+    // Update buttons (querySelectorAll('button') -> [back, next])
     const navButtons = navRow.querySelectorAll('button');
-    navButtons[0].disabled = idx === 0;
-    navButtons[2].textContent = idx === narrative.scenes.length - 1 ? 'Ir al quiz →' : 'Siguiente →';
+    if (navButtons[0]) navButtons[0].disabled = idx === 0;
+    if (navButtons[1]) navButtons[1].textContent = idx === narrative.scenes.length - 1 ? 'Ir al quiz →' : 'Siguiente →';
 
     // Apply scene-specific mode if needed
     if (scene.mode && scene.mode !== 'auto') applyMode(scene.mode);
