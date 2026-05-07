@@ -11,22 +11,15 @@
 
   .app { padding: var(--space-3) var(--space-3); }
 
-  .story__stage {
-    grid-template-columns: 1fr;
-    padding: var(--space-3);
-    min-height: 280px;
-  }
+  .story__stage { padding: var(--space-3); min-height: 320px; }
+  .story__row { grid-template-columns: 1fr; gap: var(--space-2); }
   .story__avatar {
-    align-self: center;
-    margin-bottom: var(--space-2);
+    width: 80px;
+    height: 80px;
+    align-self: flex-start;
   }
   .story__bubble::before { display: none; }
-  .story__visual {
-    position: static;
-    width: 60px;
-    height: 60px;
-    align-self: flex-end;
-  }
+  .story__visual--svg { max-height: 200px; }
 
   .quiz__options { grid-template-columns: 1fr; }
   .dnd__zones { grid-template-columns: 1fr 1fr; }

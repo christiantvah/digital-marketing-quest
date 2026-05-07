@@ -81,17 +81,14 @@ export function renderStory(root, params) {
     stage.innerHTML = '';
     stage.classList.add('scene-transition-in');
 
-    // Avatar
-    if (scene.speaker !== 'narrator') {
-      const avatarMode = (scene.mode === 'night' || meta.mode === 'night') ? 'night' : 'day';
-      const av = el('div', { class: 'story__avatar tino-enter', html: tinoAvatar(avatarMode) });
-      stage.appendChild(av);
-    }
-
-    // Visual (top right)
+    // 1) Visual centrado arriba (si hay)
     if (scene.visual) {
-      const v = el('div', { class: 'story__visual', 'aria-hidden': 'true' });
-      if (scene.visual.type === 'svg' && VISUAL_REGISTRY[scene.visual.payload]) {
+      const isSvg = scene.visual.type === 'svg' && VISUAL_REGISTRY[scene.visual.payload];
+      const v = el('div', {
+        class: `story__visual story__visual--${isSvg ? 'svg' : 'emoji'}`,
+        'aria-hidden': 'true'
+      });
+      if (isSvg) {
         v.innerHTML = VISUAL_REGISTRY[scene.visual.payload]();
       } else if (scene.visual.type === 'emoji') {
         v.textContent = scene.visual.payload;
@@ -99,7 +96,23 @@ export function renderStory(root, params) {
       stage.appendChild(v);
     }
 
-    // Bubble
+    // 2) Data card (si hay) — centrada
+    if (scene.dataCard) {
+      const dataWrap = el('div', { class: 'story__data-card', html: dataCard(scene.dataCard) });
+      stage.appendChild(dataWrap);
+      setTimeout(() => playDataReveal(), 280);
+    } else {
+      playPageFlip();
+    }
+
+    // 3) Fila inferior: avatar + bubble
+    const row = el('div', { class: `story__row ${scene.speaker === 'narrator' ? 'story__row--narrator' : ''}` });
+
+    if (scene.speaker !== 'narrator') {
+      const avatarMode = (scene.mode === 'night' || meta.mode === 'night') ? 'night' : 'day';
+      row.appendChild(el('div', { class: 'story__avatar tino-enter', html: tinoAvatar(avatarMode) }));
+    }
+
     const bubble = el('div', { class: `story__bubble ${scene.speaker === 'narrator' ? 'story__bubble--narrator' : ''}` });
     if (scene.speaker !== 'narrator') {
       bubble.appendChild(el('span', { class: `story__speaker story__speaker--${scene.speaker}` },
@@ -116,18 +129,10 @@ export function renderStory(root, params) {
       const re = new RegExp(`(${escapeRe(word)})`, 'i');
       textHtml = textHtml.replace(re, `<span class="term" tabindex="0">$1<span class="term__tip">${scene.highlight.tooltip}</span></span>`);
     }
-    const textEl = el('div', { html: textHtml });
-    bubble.appendChild(textEl);
-    stage.appendChild(bubble);
+    bubble.appendChild(el('div', { html: textHtml }));
+    row.appendChild(bubble);
 
-    // Data card (below stage)
-    if (scene.dataCard) {
-      const dataWrap = el('div', { class: 'story__data-card', html: dataCard(scene.dataCard) });
-      stage.appendChild(dataWrap);
-      setTimeout(() => playDataReveal(), 280);
-    } else {
-      playPageFlip();
-    }
+    stage.appendChild(row);
 
     // Trigger CSS animation
     setTimeout(() => stage.classList.remove('scene-transition-in'), 320);

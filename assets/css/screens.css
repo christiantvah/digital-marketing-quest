@@ -182,14 +182,13 @@
 
 .story__stage {
   flex: 1;
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-4);
-  align-items: end;
   background: var(--tino-bg);
   border-radius: var(--r-xl);
   padding: var(--space-5);
-  min-height: 320px;
+  min-height: 360px;
   position: relative;
   overflow: hidden;
 }
@@ -200,23 +199,37 @@
   background: radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 60%);
   pointer-events: none;
 }
+
+/* Visual centrado y prominente — tarjeta blanca con SVG/emoji */
 .story__visual {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  width: clamp(80px, 20vw, 140px);
-  height: clamp(80px, 20vw, 140px);
-  display: grid;
-  place-items: center;
-  font-size: clamp(3rem, 8vw, 5rem);
+  align-self: center;
+  width: min(100%, 520px);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--r-lg);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
   z-index: 1;
 }
-.story__visual svg { width: 100%; height: 100%; }
-.story__avatar {
-  width: clamp(100px, 22vw, 160px);
-  height: clamp(100px, 22vw, 160px);
-  flex-shrink: 0;
+.story__visual--svg { aspect-ratio: 16 / 9; max-height: 260px; padding: var(--space-2); }
+.story__visual--emoji { font-size: clamp(2.5rem, 7vw, 4.5rem); padding: var(--space-3); min-height: 110px; }
+.story__visual svg { width: 100%; height: 100%; max-height: 100%; }
+
+/* Avatar + bubble — fila inferior */
+.story__row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: end;
+  margin-top: auto;
   z-index: 2;
+}
+.story__avatar {
+  width: clamp(90px, 18vw, 140px);
+  height: clamp(90px, 18vw, 140px);
+  flex-shrink: 0;
   filter: drop-shadow(0 6px 16px rgba(0,0,0,0.2));
 }
 .story__avatar svg { width: 100%; height: 100%; }
@@ -229,7 +242,6 @@
   font-size: clamp(1rem, 2.2vw, 1.15rem);
   line-height: 1.55;
   color: var(--text);
-  z-index: 2;
 }
 .story__bubble::before {
   content: "";
@@ -275,15 +287,15 @@
 
 /* Speaker variants — narrator = full width text */
 .story__bubble--narrator {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.6);
   box-shadow: none;
   border: 2px dashed var(--border);
   font-style: italic;
   text-align: center;
 }
 .story__bubble--narrator::before { display: none; }
-.story[data-speaker="narrator"] .story__avatar { display: none; }
-.story[data-speaker="narrator"] .story__stage { grid-template-columns: 1fr; }
+.story__row--narrator { grid-template-columns: 1fr; }
+.story__row--narrator .story__avatar { display: none; }
 
 /* === QUIZ SCREEN === */
 .quiz {
